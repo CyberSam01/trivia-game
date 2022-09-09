@@ -59,7 +59,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   padding-bottom: 10em;
   color: #7c599e;
   font-weight: bold;
@@ -79,14 +80,14 @@ body {
 }
 
 form {
-position: relative;
-height: 10em;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-between;
-margin-top: 3em;
-font-family: 'Fredoka One', cursive;
+    position: relative;
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 3em;
+    font-family: 'Fredoka One', cursive;
 }
 
 label {
@@ -181,3 +182,69 @@ input:focus::placeholder {
   opacity: .6;
 }
 
+.score {
+  position: relative;
+  margin: 0 0 1em 0;
+}
+
+.score-btn-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width:600px) {
+  .App {
+    width: 80vw;
+  }
+  .App > h1 {
+    font-size: 8rem;
+  }
+  .start-btn {
+    font-size: 3rem;
+  }
+  .quiz {
+    min-height: 100vh;
+    height: -webkit-fill-available;
+    padding: 0;
+  }
+  .questions-div {
+    width: 80%;
+  }
+  .question {
+    font-size: 1em;
+  }
+  .answer-btns {
+    grid-gap:.5em;
+  }
+  
+  .answer-btn {
+    position: relative;
+    font-size: 1.5rem;
+  }
+  .check-answers-btn {
+    margin-bottom: 6em;
+    font-size: 2rem;
+    padding: .5em 0;
+    width: 100%;
+  }
+  .score {
+    font-size: 2.8rem;
+  }
+  label {
+    font-size: 2.8rem;
+  }
+  .questions-btn {
+    font-size: 2rem;
+    margin-top: 2em;
+  }
+}
+
+@media screen and (min-width:1000px) {
+  .App {
+    width: 40vw;
+  }
+  .questions-div {
+    width: 50%;
+  }
+}

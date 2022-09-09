@@ -1,26 +1,39 @@
 import { useState } from "react";
-import bgImg from "./85418.jpg"
 import Quiz from "./Quiz"
+import StartPage from "./StartPage"
+import SetQuiz from "./SetQuiz"
 
 function App() {
 
-  const [quiz, setQuiz] = useState(false)
+  const [isQuiz, setIsQuiz] = useState(false)
+  const [playAgain, setPlayAgain] = useState(false)
+  const [questions, setQuestions] = useState({})  
 
   function startQuiz() {
-    setQuiz(true)
+    setIsQuiz(true)
   }
 
+  function restartGame() {
+    setQuestions({})
+    setPlayAgain(false)
+  }
+
+  function startGame(data) {
+    setQuestions(data)
+    setPlayAgain(true)
+  }
 
   return (
     <div>
-     { quiz ?
-      <Quiz />
+     { isQuiz ?
+        questions.length === undefined && !playAgain ?
+          <SetQuiz startGame={startGame}/> 
+        :
+          <Quiz questions={questions}
+                restartGame={restartGame}
+          />
       :
-      <div className="App">
-        <img src={bgImg} className="bgImg"></img>
-        <h1>Quizzical</h1>
-        <button className="start-btn btn" type="submit" onClick={startQuiz}>Start quiz</button>
-      </div> }
+      <StartPage startQuiz = {startQuiz} />}
     </div>
   );
 }
